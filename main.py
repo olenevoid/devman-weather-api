@@ -2,11 +2,10 @@ import requests
 
 
 def get_weather(location: str):
-    url = f'http://wttr.in/{location}?nTqM&lang=ru'
-    response: requests.Response = requests.get(url)
-    response.raise_for_status()
-    return response.content.decode('utf-8')
-
+    params = {
+        'nTqM': '',
+        'lang': 'ru'
+        }
 
     url = f'http://wttr.in/{location}'
     response: requests.Response = requests.get(url, params=params)
