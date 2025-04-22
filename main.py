@@ -8,14 +8,16 @@ def get_weather(location: str):
     return response.content.decode('utf-8')
 
 
-def get_weather_for_locations(locations: list):
-    for location in locations:
-        print(get_weather(location))
+    url = f'http://wttr.in/{location}'
+    response: requests.Response = requests.get(url, params=params)
+    response.raise_for_status()
+    return response.text
 
 
 def main():
     locations = ['Шереметьево', 'London', 'Череповец']
-    get_weather_for_locations(locations)
+    for location in locations:
+        print(get_weather(location))
 
 
 if __name__ == '__main__':
